@@ -8,23 +8,69 @@
 </head>
 <body>
 
-  <nav class="main-nav">
-    <a href="index.html" class="nav-logo">La Petite Miette</a>
-    <ul>
-      <li><a href="interactivities.html">Interactivities</a></li>
-      <li><a href="experiments.html">Experiments</a></li>
-      <li><a href="process.html">Process</a></li>
-      <li><a href="glossary.html">Glossary</a></li>
-    </ul>
-  </nav>
+  <div id="transition-veil"></div>
 
-  <main>
-    <!-- your macaroon tray goes here -->
-  </main>
+  <header>
+    
+  </header>
 
-  <footer>
-    <p>Jasleen — Web Design Workbook 2026</p>
-  </footer>
+  <section class="tray-section">
+    <div class="tray-wrapper">
+      <img src="images/macaroons/tray.png" alt="baking tray" class="tray-img">
+      <div class="macaroon-grid">
+
+        <div class="macaroon-item" data-id="pink" data-page="interactivities.html">
+          <img src="images/macaroons/pink0.png" alt="Interactivities macaroon" class="macaroon-img" id="pink">
+          <div class="progress-dots">
+            <span id="pink-d0"></span>
+            <span id="pink-d1"></span>
+            <span id="pink-d2"></span>
+            <span id="pink-d3"></span>
+          </div>
+          <p class="macaroon-label"></p>
+        </div>
+
+        <div class="macaroon-item" data-id="purple" data-page="experiments.html">
+          <img src="images/macaroons/purple0.png" alt="Experiments macaroon" class="macaroon-img" id="purple">
+          <div class="progress-dots">
+            <span id="purple-d0"></span>
+            <span id="purple-d1"></span>
+            <span id="purple-d2"></span>
+            <span id="purple-d3"></span>
+          </div>
+          <p class="macaroon-label"></p>
+        </div>
+
+        <div class="macaroon-item" data-id="blue" data-page="process.html">
+          <img src="images/macaroons/blue0.png" alt="Process macaroon" class="macaroon-img" id="blue">
+          <div class="progress-dots">
+            <span id="blue-d0"></span>
+            <span id="blue-d1"></span>
+            <span id="blue-d2"></span>
+            <span id="blue-d3"></span>
+          </div>
+          <p class="macaroon-label"></p>
+        </div>
+
+        <div class="macaroon-item" data-id="yellow" data-page="glossary.html">
+          <img src="images/macaroons/yellow0.png" alt="Glossary macaroon" class="macaroon-img" id="yellow">
+          <div class="progress-dots">
+            <span id="yellow-d0"></span>
+            <span id="yellow-d1"></span>
+            <span id="yellow-d2"></span>
+            <span id="yellow-d3"></span>
+          </div>
+          <p class="macaroon-label"></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <audio id="munch-audio" preload="auto">
+    <source src="audio/munch.mp3" type="audio/mpeg">
+  </audio>
 
   <script src="main.js"></script>
 
