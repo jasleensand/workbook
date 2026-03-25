@@ -6,12 +6,13 @@
 }
 
 body {
-  background: #FAF5EC;
+  background: #b1ebd5;
   font-family: 'DM Sans', sans-serif;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: url('../images/content/chefmouse.png') 0 0, auto;
 }
 
 /* ── GOOGLE FONTS ── */
