@@ -6,7 +6,7 @@
 }
 
 body {
-  background: #f1e4c6;
+  background: #f7d992;
   font-family: 'DM Sans', sans-serif;
   min-height: 100vh;
   display: flex;
@@ -301,7 +301,7 @@ h1 em {
 
 /* ── EXPERIMENTS PAGE ── */
 .experiments-page {
-  background: #e6d0a8;
+  background: #f7d992;
   min-height: 100vh;
   overflow: hidden;
 }
@@ -386,7 +386,7 @@ h1 em {
 
 /* ── PROCESS PAGE ── */
 .process-page {
-  background: #FAF5EC;
+  background: #f7d992;
   min-height: 100vh;
 }
 
@@ -456,7 +456,7 @@ h1 em {
 }
 
 .process-page {
-  background: #FAF5EC;
+  background: #f7d992;
   min-height: 100vh;
   display: block;
 }
