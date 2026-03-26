@@ -49,11 +49,11 @@ function handleBite(id, page) {
 
   // 5. toast messages
   const messages = [
-    'Mmm… first bite!',
-    'Getting there…',
-    'Almost gone!',
-    'One more bite…',
-    `Off to ${page.replace('.html', '')}!`
+    'munch!',
+    'munch!',
+    'munch!',
+    'munch!',
+    `off to ${page.replace('.html', '')}!`
   ];
   showToast(messages[current]);
 
