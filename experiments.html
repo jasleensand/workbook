@@ -3,32 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>La Petite Miette — Experiments</title>
+  <title>Jasleen's Bakery — Experiments</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="experiments-page">
 
-  <nav class="main-nav">
-    <a href="index.html" class="nav-logo">La Petite Miette</a>
-    <ul>
-      <li><a href="interactivities.html">Interactivities</a></li>
-      <li><a href="experiments.html" class="active">Experiments</a></li>
-      <li><a href="process.html">Process</a></li>
-      <li><a href="glossary.html">Glossary</a></li>
-    </ul>
-  </nav>
+  <a href="index.html" class="home-btn">
+    <img src="images/content/home.png" alt="home">
+  </a>
+
+  <div class="experiments-wrap">
+
+    <div class="table-bg-exp">
+      <img src="images/content/experiments/table.png" alt="" class="table-img-exp">
+    </div>
+
+    <div class="book-area">
+
+      <!-- LEFT: page display -->
+      <div class="book-page" id="bookPage">
+        <img src="images/content/experiments/pageone.png" alt="page" id="pageImg" class="page-img">
+      </div>
+
+    </div>
+
+    <!-- page counter -->
+    <p class="page-counter" id="pageCounter">1 / 3</p>
+
+  </div>
+
 
   <main>
-    <!-- your content goes here -->
+    <img src="images/content/experiments/experscroll.png" alt="Jasleen's Bakery Scroll" class="logo-stamp">
   </main>
 
-  <a href="index.html" class="back-to-tray">← Back to Tray</a>
-
-  <footer>
-    <p>Jasleen — Web Design Workbook 2026</p>
-  </footer>
-
   <script src="main.js"></script>
+  <script src="experiments.js"></script>
 
 </body>
 </html>
