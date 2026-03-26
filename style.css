@@ -155,6 +155,22 @@ h1 em {
   color: #7A6858;
 }
 
+/* ── LOGO STAMP ── */
+.logo-stamp {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  animation: spin 12s linear infinite;
+  z-index: 50;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
 
 /* ── PAGE TRANSITION VEIL ── */
 #transition-veil {
