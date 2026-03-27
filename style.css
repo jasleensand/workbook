@@ -477,3 +477,106 @@ h1 em {
   gap: 2.5rem;
   width: 100%;
 }
+
+/* ── GLOSSARY PAGE ── */
+.glossary-page {
+  background: #FAF5EC;
+  min-height: 100vh;
+  display: block;
+}
+
+.glossary-main {
+  padding: 5rem 2.5rem 4rem;
+  max-width: 1300px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ── GLOSSARY GRID ── */
+.glossary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+/* ── GLOSSARY CARD ── */
+.glossary-card {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--accent);
+}
+
+.card-front {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 1.2rem;
+  background: var(--accent);
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+  text-align: center;
+}
+
+.card-category {
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #FAF5EC;
+  opacity: 0.8;
+}
+
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #FAF5EC;
+  line-height: 1.2;
+}
+
+/* ── REVEAL ON HOVER ── */
+.card-reveal {
+  position: absolute;
+  inset: 0;
+  background: #3B2A1A;
+  color: #FAF5EC;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.8rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-reveal p {
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: #FAF5EC;
+}
+
+.card-reveal a {
+  font-size: 0.72rem;
+  color: #C8965A;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+
+.card-reveal a:hover {
+  text-decoration: underline;
+}
+
+.glossary-card:hover .card-front {
+  opacity: 0;
+}
+
+.glossary-card:hover .card-reveal {
+  opacity: 1;
+}
