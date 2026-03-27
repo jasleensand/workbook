@@ -173,3 +173,25 @@ function showToast(msg) {
     toast.style.transform = 'translate(-50%, -50%) scale(0.8)';
     setTimeout(() => toast.remove(), 300);
   }, 1800);
+
+  // ── UNLOCK AUDIO FOR CHROME ───────────────────────
+function unlockAudio() {
+  const audio = document.getElementById('munch-audio');
+  if (audio) {
+    audio.load();
+    audio.volume = 0;
+    audio.currentTime = 2;
+    audio.play().then(() => {
+      audio.pause();
+      audio.currentTime = 2;
+      audio.volume = 1;
+    }).catch(() => {});
+  }
+  document.removeEventListener('click', unlockAudio);
+  document.removeEventListener('touchstart', unlockAudio);
+  document.removeEventListener('keydown', unlockAudio);
+}
+
+document.addEventListener('click', unlockAudio);
+document.addEventListener('touchstart', unlockAudio);
+document.addEventListener('keydown', unlockAudio);
