@@ -1,3 +1,4 @@
+// Gen AI was used to debug and also make annimated states
 // ── BITE STATE ──────────────────────────────────
 // tracks how many bites each macaroon has had
 const biteState = {
@@ -48,7 +49,7 @@ function handleBite(id, page) {
   }
 
   // 4. fill progress dot
-  if (current < 4) {
+  if (current < 6) {
     const dot = document.getElementById(`${id}-d${current}`);
     if (dot) dot.classList.add('filled');
   }

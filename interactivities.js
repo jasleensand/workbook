@@ -1,3 +1,4 @@
+// AI was used to help create the drag and drop section and adapted
 // ── DRAG TO SORT RECIPE CARDS ──────────────────────
 const cards = document.querySelectorAll('.recipe-card');
 

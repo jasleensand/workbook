@@ -1,3 +1,4 @@
+// AI was used to make basic scroll book and adapted.
 // ── BOOK PAGE FLIP ──────────────────────────────────
 
 const pages = [
@@ -66,19 +67,12 @@ window.addEventListener('touchend', (e) => {
   changePage();
 });
 
-// ── ARROW CLICK STILL WORKS TOO ──────────────────────
+// ── ARROW CLICK ──────────────────────────────────────
 if (nextBtn) {
   nextBtn.addEventListener('click', () => {
     currentPage = (currentPage + 1) % pages.length;
     changePage();
   });
-}
-
-// ── CHANGE PAGE ──────────────────────────────────────
-function changePage() {
-  playFlip();
-  pageImg.src = pages[currentPage];
-  pageCounter.textContent = `${currentPage + 1} / ${pages.length}`;
 }
 
 // ── AUDIO ────────────────────────────────────────────
@@ -92,3 +86,12 @@ function playFlip() {
     }, 1000);
   }
 }
+
+
+// ── CHANGE PAGE ──────────────────────────────────────
+function changePage() {
+  playFlip();
+  pageImg.src = pages[currentPage];
+  pageCounter.textContent = `${currentPage + 1} / ${pages.length}`;
+}
+
