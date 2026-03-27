@@ -19,7 +19,7 @@ document.querySelectorAll('.macaroon-item').forEach(item => {
 // ── HANDLE BITE ─────────────────────────────────
 function handleBite(id, page) {
   const current = biteState[id];
-  if (current >= 5) return;
+  if (current >= 6) return;
 
   // 1. play munch sound
   playMunch();
@@ -27,21 +27,27 @@ function handleBite(id, page) {
   // 2. advance bite state
   biteState[id] = current + 1;
 
-    // 3. swap image
+  // 3. swap image or hide on 6th click
   const img = document.getElementById(id);
-  if (biteState[id] === 5) {
-    img.src = `images/macaroons/${id}${biteState[id]}.png`;
+
+  if (biteState[id] === 6) {
+    // 6th click — hide the last piece and redirect
+    img.style.opacity = '0';
+    img.style.transform = 'scale(0.5)';
+    img.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
     setTimeout(() => {
-      img.style.opacity = '0';
-      img.style.transform = 'scale(0.5)';
-      img.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+      const veil = document.getElementById('transition-veil');
+      veil.classList.add('active');
+      setTimeout(() => {
+        window.location.href = page;
+      }, 600);
     }, 500);
   } else {
+    // clicks 1-5 — just swap the image
     img.src = `images/macaroons/${id}${biteState[id]}.png`;
   }
 
   // 4. fill progress dot
-  // dots only go 0-3 (4 dots for 5 clicks, last click redirects)
   if (current < 4) {
     const dot = document.getElementById(`${id}-d${current}`);
     if (dot) dot.classList.add('filled');
@@ -53,12 +59,13 @@ function handleBite(id, page) {
     'munch!',
     'munch!',
     'munch!',
+    'munch!',
     `off to ${page.replace('.html', '')}!`
   ];
   showToast(messages[current]);
 
      // 6. on 5th bite — fade out then redirect
-  if (biteState[id] === 5) {
+  if (biteState[id] === 6) {
     setTimeout(() => {
       const veil = document.getElementById('transition-veil');
       veil.classList.add('active');
