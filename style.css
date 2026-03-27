@@ -480,7 +480,7 @@ h1 em {
 
 /* ── GLOSSARY PAGE ── */
 .glossary-page {
-  background: #FAF5EC;
+  background: #f7d992;
   min-height: 100vh;
   display: block;
 }
@@ -529,15 +529,15 @@ h1 em {
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #FAF5EC;
+  color:#f7d992;
   opacity: 0.8;
 }
 
 .card-title {
-  font-family: 'Playfair Display', serif;
+  font-family: "Leckerli One", serif;
   font-size: 1.1rem;
   font-weight: 600;
-  color: #FAF5EC;
+  color: #f7d992;
   line-height: 1.2;
 }
 
@@ -546,7 +546,7 @@ h1 em {
   position: absolute;
   inset: 0;
   background: #3B2A1A;
-  color: #FAF5EC;
+  color: #f7d992;
   padding: 1.2rem;
   display: flex;
   flex-direction: column;
@@ -559,7 +559,7 @@ h1 em {
 .card-reveal p {
   font-size: 0.78rem;
   line-height: 1.6;
-  color: #FAF5EC;
+  color: #f7d992;
 }
 
 .card-reveal a {
