@@ -3,7 +3,12 @@
 const pages = [
   'images/content/experiments/pageone.png',
   'images/content/experiments/pagetwo.png',
-  'images/content/experiments/pagethree.png'
+  'images/content/experiments/pagethree.png',
+  'images/content/experiments/pagefour.png',
+  'images/content/experiments/pagefive.png',
+  
+ 
+
 ];
 
 let currentPage = 0;
