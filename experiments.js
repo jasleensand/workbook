@@ -1,5 +1,4 @@
-// AI was used to make basic scroll book and adapted.
-// ── BOOK PAGE FLIP ──────────────────────────────────
+// ── EXPERIMENTS PAGE — MACAROON PAGE TURNER ─────────
 
 const pages = [
   'images/content/experiments/pageone.png',
@@ -8,14 +7,15 @@ const pages = [
 ];
 
 let currentPage = 0;
-let isScrolling = false;
+let biteCount = 0;
+let isAnimating = false;
 
-const pageImg     = document.getElementById('pageImg');
-const nextBtn     = document.getElementById('nextBtn');
-const pageCounter = document.getElementById('pageCounter');
-const flipAudio   = document.getElementById('flip-audio');
+const pageImg      = document.getElementById('pageImg');
+const pageCounter  = document.getElementById('pageCounter');
+const flipAudio    = document.getElementById('flip-audio');
+const macaroon     = document.getElementById('pageMacaroon');
 
-// unlock audio on first interaction
+// ── UNLOCK AUDIO ─────────────────────────────────────
 window.addEventListener('load', () => {
   if (flipAudio) {
     flipAudio.volume = 0;
@@ -27,55 +27,76 @@ window.addEventListener('load', () => {
   }
 });
 
-// ── SCROLL TO CHANGE PAGE ────────────────────────────
-window.addEventListener('wheel', (e) => {
-  if (isScrolling) return;
-  isScrolling = true;
+// ── MACAROON CLICK ───────────────────────────────────
+if (macaroon) {
+  macaroon.addEventListener('click', () => {
+    if (isAnimating) return;
 
-  if (e.deltaY > 0) {
-    // scroll down — next page
+    playFlip();
+    biteCount++;
+
+    // advance page
     currentPage = (currentPage + 1) % pages.length;
-  } else {
-    // scroll up — previous page
-    currentPage = (currentPage - 1 + pages.length) % pages.length;
-  }
+    pageImg.src = pages[currentPage];
+    pageCounter.textContent = `${currentPage + 1} / ${pages.length}`;
 
-  changePage();
+    // swap macaroon bite image
+    if (biteCount <= 5) {
+      macaroon.src = `images/macaroons/purple${biteCount}.png`;
+    }
 
-  setTimeout(() => { isScrolling = false; }, 600);
-});
+    // on 5th bite — reset macaroon after short delay
+    if (biteCount === 5) {
+      isAnimating = true;
+      setTimeout(() => {
+        // fade out
+        macaroon.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        macaroon.style.opacity = '0';
+        macaroon.style.transform = 'scale(0.5)';
 
-// ── TOUCH SWIPE ──────────────────────────────────────
-let touchStartY = 0;
+        setTimeout(() => {
+         // reset to whole at a slightly different position
+          biteCount = 0;
+          macaroon.src = 'images/macaroons/purple0.png';
 
-window.addEventListener('touchstart', (e) => {
-  touchStartY = e.touches[0].clientY;
-});
+          const positions = [
+            { top: '50%', right: '15%' },
+            { top: '42%', right: '19%' },
+            { top: '55%', right: '6%' },
+            { top: '20%', right: '10%' },
+          ];
+          const randomPos = positions[Math.floor(Math.random() * positions.length)];
+          macaroon.style.top = randomPos.top;
+          macaroon.style.right = randomPos.right;
 
-window.addEventListener('touchend', (e) => {
-  const diff = touchStartY - e.changedTouches[0].clientY;
-  if (Math.abs(diff) < 40) return; // ignore tiny swipes
+          // pop back in
+          macaroon.style.transition = 'opacity 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
+          macaroon.style.opacity = '1';
+          macaroon.style.transform = 'scale(1)';
 
-  if (diff > 0) {
-    // swipe up — next page
-    currentPage = (currentPage + 1) % pages.length;
-  } else {
-    // swipe down — previous page
-    currentPage = (currentPage - 1 + pages.length) % pages.length;
-  }
-
-  changePage();
-});
-
-// ── ARROW CLICK ──────────────────────────────────────
-if (nextBtn) {
-  nextBtn.addEventListener('click', () => {
-    currentPage = (currentPage + 1) % pages.length;
-    changePage();
+          isAnimating = false;
+        }, 500);
+      }, 400);
+    }
   });
 }
 
-// ── AUDIO ────────────────────────────────────────────
+
+
+// ── CLICK PAGE TO ENLARGE ────────────────────────────
+const lightbox = document.getElementById('pageLightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+
+pageImg.addEventListener('click', () => {
+  lightboxImg.src = pageImg.src;
+  lightbox.classList.add('active');
+});
+
+lightbox.addEventListener('click', () => {
+  lightbox.classList.remove('active');
+});
+
+// ── AUDIO ─────────────────────────────────────────────
 function playFlip() {
   if (flipAudio) {
     flipAudio.currentTime = 0;
@@ -86,12 +107,3 @@ function playFlip() {
     }, 1000);
   }
 }
-
-
-// ── CHANGE PAGE ──────────────────────────────────────
-function changePage() {
-  playFlip();
-  pageImg.src = pages[currentPage];
-  pageCounter.textContent = `${currentPage + 1} / ${pages.length}`;
-}
-

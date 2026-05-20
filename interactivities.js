@@ -78,3 +78,25 @@ function stopDrag() {
   document.removeEventListener('mouseup', stopDrag);
   document.removeEventListener('touchend', stopDrag);
 }
+// ── LOCAL VIDEO MODAL ────────────────────────────────
+document.querySelectorAll('.recipe-card[data-video-local]').forEach(card => {
+  let mdX = 0, mdY = 0;
+  card.addEventListener('mousedown', (e) => { mdX = e.clientX; mdY = e.clientY; });
+  card.addEventListener('mouseup', (e) => {
+    if (Math.abs(e.clientX - mdX) < 5 && Math.abs(e.clientY - mdY) < 5) {
+      const modal = document.getElementById('videoModal');
+      const container = document.getElementById('videoContainer');
+      
+      // swap iframe for video element
+      container.innerHTML = `
+        <button id="closeVideo" onclick="
+          document.getElementById('videoModal').classList.remove('active');
+          document.getElementById('videoContainer').innerHTML='';
+        ">✕</button>
+        <video src="${card.dataset.videoLocal}" controls autoplay 
+          style="width:100%;height:100%;border-radius:8px;">
+        </video>`;
+      modal.classList.add('active');
+    }
+  });
+});

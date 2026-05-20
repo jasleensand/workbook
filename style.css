@@ -70,8 +70,6 @@ h1 em {
 .tray-img {
   width: 100%;
   display: block;
-  /* if you don't have a tray PNG, remove this and 
-     the CSS tray below will draw it instead */
 }
 
 /* ── MACAROON GRID overlaid on tray ── */
@@ -216,6 +214,43 @@ h1 em {
   width: 100%;
 }
 
+/* ── CARD LIGHTBOX ── */
+#cardLightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 5000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  cursor: zoom-out;
+}
+
+#cardLightbox.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#cardLightbox img {
+  max-width: 85vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+#cardLightbox.active img {
+  transform: scale(1);
+}
+
+.recipe-card {
+  cursor: zoom-in;
+}
+
 /* ── TABLE ── */
 .table-bg {
   position: relative;
@@ -248,7 +283,7 @@ h1 em {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-70%, -47%);
   width: 500px;
   height: 360px;
   z-index: 2;
@@ -259,19 +294,20 @@ h1 em {
   position: absolute;
   top: 0;
   left: 0;
-  width: 500px;
+  width: 700px;
   cursor: grab;
   transform: translate(var(--tx), var(--ty)) rotate(var(--rot));
   transition: box-shadow 0.2s, transform 0.1s;
   border-radius: 6px;
   user-select: none;
+  overflow: visible;
 }
 
 .recipe-card img {
   width: 100%;
   display: block;
   border-radius: 6px;
-  pointer-events: none;
+  pointer-events: all;
   -webkit-user-drag: none;
 }
 
@@ -315,6 +351,63 @@ h1 em {
   justify-content: flex-start;
   padding-left: 0;
 }
+
+.scroll-hint {
+  position: fixed;
+  bottom: 2rem;
+  left: clamp(150px, 21vw, 280px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  z-index: 10;
+}
+
+.scroll-hint p {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #7A6858;
+}
+
+.scroll-arrow {
+  font-size: 1.2rem;
+  color: #7A6858;
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+
+
+
+/* ── PAGE MACAROON ── */
+.page-macaroon {
+  position: absolute;
+  right: 8%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(100px, 12vw, 160px);
+  height: clamp(100px, 12vw, 160px);
+  object-fit: contain;
+  cursor: pointer;
+  z-index: 5;
+  transition: transform 0.15s ease, filter 0.15s ease;
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,0.15));
+}
+
+.page-macaroon:hover {
+  transform: translateY(-50%) scale(1.08) translateY(-4px);
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+}
+
+.page-macaroon:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+
 
 /* ── TABLE BG ── */
 .table-bg-exp {
@@ -382,6 +475,46 @@ h1 em {
 .next-btn img {
   width: 100%;
   display: block;
+}
+
+/* ── PAGE LIGHTBOX ── */
+.page-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 5000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: scroll;
+  padding: 2rem 0 4rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  cursor: zoom-out;
+}
+
+.page-lightbox.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.page-lightbox img {
+  width: 60vw;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.page-lightbox.active img {
+  transform: scale(1);
+}
+
+/* make book page show zoom cursor */
+.page-img {
+  cursor: zoom-in;
 }
 
 /* ── PROCESS PAGE ── */
@@ -461,13 +594,11 @@ h1 em {
   display: block;
 }
 
+
 .process-page .process-main {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 3rem 3rem 4rem;
-  height: 100vh;
-  display: flex;
-  align-items: center;
+  padding: 37rem 3rem 4rem;
   width: 100%;
 }
 
@@ -477,6 +608,47 @@ h1 em {
   gap: 2.5rem;
   width: 100%;
 }
+
+/* ── PROCESS LIGHTBOX ── */
+#processLightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 5000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: scroll;
+  padding: 2rem 0 4rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  cursor: zoom-out;
+}
+
+#processLightbox.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#processLightbox img {
+  width: 60vw;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+#processLightbox.active img {
+  transform: scale(1);
+}
+
+
+
+
+
+
 
 /* ── GLOSSARY PAGE ── */
 .glossary-page {
@@ -579,4 +751,57 @@ h1 em {
 
 .glossary-card:hover .card-reveal {
   opacity: 1;
+}
+
+/* ── VIDEO MODAL ── */
+#videoModal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 6000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+#videoModal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#videoContainer {
+  position: relative;
+  width: 70vw;
+  aspect-ratio: 16/9;
+}
+
+#closeVideo {
+  position: absolute;
+  top: -2rem;
+  right: 0;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.play-btn {
+  position: absolute;
+  bottom: 18%;
+  right: 8%;
+  width: 60px;
+  height: 60px;
+  background: transparent;
+  color: transparent;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0;
+  cursor: pointer;
+  z-index: 10;
 }

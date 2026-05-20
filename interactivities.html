@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Jasleen's Bakery</title>
+  <title>Jasleen's Bakery - Interactivities</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="images/content/logo.png">
 </head>
@@ -44,11 +44,34 @@
   <img src="images/content/interactivities/papercard.png" alt="Paper Prototyping">
 </div>
 
+<div class="recipe-card" id="card-paper"
+  style="--rot: 6deg; --tx: 0px; --ty: 0px; z-index: 6;">
+  <img src="images/content/interactivities/pstartercard.png" alt="p5 starter">
+</div>
+
+<div class="recipe-card" id="card-arduino"
+  style="--rot: 2deg; --tx: 0px; --ty: 0px; z-index: 7;"
+  data-video-local="audio/arduino.mp4">
+  <img src="images/content/interactivities/arduinocard.png" alt="Arduino Distance Sensor">
+</div>
+
+<div class="recipe-card" id="card-theremin"
+  style="--rot: -2deg; --tx: 0px; --ty: 0px; z-index: 8;"
+  data-video-local="audio/shadow.mp4">
+  <img src="images/content/interactivities/shadowcard.png" alt="Shadow Theremin">
+</div>
+
     </div>
   </div>
+
+  <div id="videoModal">
+  <div id="videoContainer">
+  </div>
+</div>
 
   <script src="main.js"></script>
   <script src="interactivities.js"></script>
 
-</body>
+
+  </body>
 </html>
